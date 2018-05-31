@@ -1,0 +1,197 @@
+PATH
+  remote: .
+  specs:
+    opener-chained-daemon (1.0)
+      activesupport
+      opener-callback-handler (~> 1.0)
+      opener-daemons
+      opener-language-identifier
+      opener-ner
+      opener-opinion-detector-basic
+      opener-polarity-tagger
+      opener-pos-tagger
+      opener-property-tagger
+      opener-tokenizer
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (5.1.4)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
+    ansi (1.5.0)
+    archive (0.0.6)
+      ffi (~> 1.9.3)
+    ast (2.4.0)
+    aws-sdk (2.11.60)
+      aws-sdk-resources (= 2.11.60)
+    aws-sdk-core (2.11.60)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.11.60)
+      aws-sdk-core (= 2.11.60)
+    aws-sigv4 (1.0.2)
+    builder (3.2.3)
+    cliver (0.3.2)
+    coderay (1.1.2)
+    concurrent-ruby (1.0.5-java)
+    diff-lcs (1.3)
+    ffi (1.9.23-java)
+    httpclient (2.8.3)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
+    jmespath (1.4.0)
+    json (2.1.0-java)
+    json-schema (2.8.0)
+      addressable (>= 2.4)
+    method_source (0.9.0)
+    minitest (5.11.3)
+    multi_json (1.13.1)
+    newrelic_rpm (5.1.0.344)
+    nokogiri (1.8.2-java)
+    oga (1.3.1-java)
+      ast
+      ruby-ll (~> 2.1)
+    oni (4.1.0)
+    opener-callback-handler (1.1.0)
+      addressable
+      aws-sdk (~> 2.0)
+      httpclient
+    opener-core (2.4.0)
+      archive
+      httpclient
+      slop (~> 3.0)
+    opener-daemons (2.6.3)
+      aws-sdk (~> 2.0)
+      httpclient (~> 2.0, >= 2.5.3.3)
+      json-schema
+      newrelic_rpm
+      oga (~> 1.0)
+      oni (~> 4.0)
+      opener-callback-handler (~> 1.1)
+      opener-core (~> 2.3)
+      rollbar (~> 1.0)
+      slop (~> 3.0)
+    opener-language-identifier (4.2.2)
+      builder
+      nokogiri
+      opener-daemons (~> 2.2)
+      opener-webservice (~> 2.1)
+      slop (~> 3.5)
+    opener-ner (3.0.0)
+      nokogiri
+      opener-core (~> 2.2)
+      opener-daemons (~> 2.2)
+      opener-ner-base (~> 3.0)
+      opener-webservice (~> 2.1)
+    opener-ner-base (3.1.0)
+      oga
+      opener-core
+    opener-opinion-detector-basic (3.1.2)
+      oga (~> 1.0, >= 1.3.1)
+      opener-core (~> 2.2)
+      opener-daemons (~> 2.2)
+      opener-webservice (~> 2.1)
+    opener-polarity-tagger (3.0.1)
+      cliver
+      nokogiri
+      opener-core (~> 2.2)
+      opener-daemons (~> 2.2)
+      opener-webservice (~> 2.1)
+      rake
+      slop (~> 3.5)
+    opener-pos-tagger (3.1.3)
+      nokogiri
+      opener-core (~> 2.3)
+      opener-daemons (~> 2.1)
+      opener-pos-tagger-base (~> 2.0, >= 2.1.0)
+      opener-pos-tagger-en-es (~> 2.0, >= 2.0.2)
+      opener-webservice (~> 2.0)
+      slop (~> 3.5)
+    opener-pos-tagger-base (2.2.1)
+      cliver
+      rake
+    opener-pos-tagger-en-es (2.0.3)
+      nokogiri
+    opener-property-tagger (3.1.1)
+      oga (~> 1.0, >= 1.3.1)
+      opener-core (~> 2.2)
+      opener-daemons (~> 2.2)
+      opener-webservice (~> 2.1)
+    opener-tokenizer (2.1.2)
+      nokogiri
+      opener-core (~> 2.4)
+      opener-daemons (~> 2.1)
+      opener-tokenizer-base (~> 1.0)
+      opener-webservice (~> 2.1)
+      slop (~> 3.5)
+    opener-tokenizer-base (1.0.0)
+    opener-webservice (2.2.0)
+      httpclient (~> 2.0, >= 2.5.3.3)
+      json
+      newrelic_rpm
+      opener-callback-handler (~> 1.0)
+      opener-core (~> 2.3)
+      puma
+      rollbar (~> 1.0)
+      sinatra (~> 1.4.3)
+      slop (~> 3.0)
+    pry (0.11.3-java)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+      spoon (~> 0.0)
+    public_suffix (3.0.2)
+    puma (3.11.4-java)
+    rack (1.6.10)
+    rack-protection (1.5.5)
+      rack
+    rack-test (1.0.0)
+      rack (>= 1.0, < 3)
+    rake (12.3.1)
+    rollbar (1.5.3)
+      multi_json (~> 1.3)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.1)
+    ruby-ll (2.1.2-java)
+      ansi
+      ast
+    sinatra (1.4.8)
+      rack (~> 1.5)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
+    slop (3.6.0)
+    spoon (0.0.6)
+      ffi
+    thread_safe (0.3.6-java)
+    tilt (2.0.8)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  bundler (~> 1.3)
+  opener-chained-daemon!
+  pry
+  rack-test
+  rake
+  rspec
+
+BUNDLED WITH
+   1.15.4
