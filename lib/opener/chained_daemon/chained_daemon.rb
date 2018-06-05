@@ -15,15 +15,17 @@ module Opener
     }
 
     def initialize options = {}
-      @options = DEFAULT_OPTIONS.merge(options)
+      @options = DEFAULT_OPTIONS.merge options
     end
 
     def run input
+      output = nil
       QUEUES_MAP.each do |queue, klass|
-        puts input
-        input = klass.new.run input
+        File.write "input-#{queue}", input if ENV['DEBUG']
+        output = klass.new.run input
+        input  = output
       end
-      puts input
+      puts output
     end
 
   end
