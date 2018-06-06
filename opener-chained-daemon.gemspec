@@ -10,11 +10,11 @@ Gem::Specification.new do |spec|
   spec.license = 'Apache 2.0'
 
   spec.files = Dir.glob([
-    'config/**/*',
+    'exec/**/*',
     'lib/**/*',
     '*.gemspec',
     'README.md',
-    'LICENSE.txt',
+    'LICENSE.txt'
   ]).select{ |file| File.file? file }
 
   spec.bindir = 'bin'

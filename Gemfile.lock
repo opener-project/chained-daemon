@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    opener-chained-daemon (1.0.0)
+    opener-chained-daemon (1.0.1)
       activesupport
       opener-callback-handler (~> 1.0)
       opener-daemons
