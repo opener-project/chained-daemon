@@ -1,4 +1,7 @@
 
 
+*.gem
+
+# editors
 *.swp
 

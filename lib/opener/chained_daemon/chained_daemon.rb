@@ -1,31 +1,30 @@
 module Opener
   class ChainedDaemon
 
-    QUEUES_MAP = {
-      'opener-language-identifier':    Opener::LanguageIdentifier,
-      'opener-tokenizer':              Opener::Tokenizer,
-      'opener-pos-tagger':             Opener::POSTagger,
-      'opener-polarity-tagger':        Opener::PolarityTagger,
-      'opener-property-tagger':        Opener::PropertyTagger,
-      'opener-ner':                    Opener::Ner,
-      'opener-opinion-detector-basic': Opener::OpinionDetectorBasic,
-    }
-
     DEFAULT_OPTIONS = {
     }
 
     def initialize options = {}
-      @options = DEFAULT_OPTIONS.merge options
+      @options   = DEFAULT_OPTIONS.merge options
+      @queue_map = {
+      'opener-language-identifier':    Opener::LanguageIdentifier.new,
+      'opener-tokenizer':              Opener::Tokenizer.new,
+      'opener-pos-tagger':             Opener::POSTagger.new,
+      'opener-polarity-tagger':        Opener::PolarityTagger.new,
+      'opener-property-tagger':        Opener::PropertyTagger.new,
+      'opener-ner':                    Opener::Ner.new,
+      'opener-opinion-detector-basic': Opener::OpinionDetectorBasic.new,
+    }
     end
 
     def run input
       output = nil
-      QUEUES_MAP.each do |queue, klass|
+      @queue_map.each do |queue, component|
         File.write "input-#{queue}", input if ENV['DEBUG']
-        output = klass.new.run input
+        output = component.run input
         input  = output
       end
-      puts output
+      output
     end
 
   end

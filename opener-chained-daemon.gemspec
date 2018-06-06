@@ -10,12 +10,16 @@ Gem::Specification.new do |spec|
   spec.license = 'Apache 2.0'
 
   spec.files = Dir.glob([
+    'bin/chained-daemon',
     'config/**/*',
     'lib/**/*',
     '*.gemspec',
     'README.md',
-    'LICENSE.txt'
-  ]).select { |file| File.file?(file) }
+    'LICENSE.txt',
+  ]).select{ |file| File.file? file }
+
+  spec.bindir = 'bin'
+  spec.executables << 'chained-daemon'
 
   spec.add_dependency 'activesupport'
   spec.add_dependency 'opener-daemons'

@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'opener/daemons'
+
+controller = Opener::Daemons::Controller.new(
+  name:      'opener-chained-daemon',
+  exec_path: File.expand_path('../../exec/chained-daemon.rb', __FILE__),
+)
+controller.run
