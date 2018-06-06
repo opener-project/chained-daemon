@@ -1,4 +1,6 @@
 require 'active_support/all'
+require 'oga'
+
 require 'opener/daemons'
 
 require 'opener/language_identifier'
