@@ -25,6 +25,8 @@ module Opener
         input  = output
       end
       output
+    rescue Core::UnsupportedLanguageError
+      output
     end
 
   end
