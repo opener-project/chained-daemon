@@ -26,8 +26,8 @@ module Opener
       end
       output
     rescue Core::UnsupportedLanguageError
+      puts "Error on unsupported language: #{input}" if ENV['DEBUG']
       output
     end
-
   end
 end

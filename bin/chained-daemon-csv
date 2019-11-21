@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require_relative '../lib/opener/chained_daemon'
+require_relative '../../kaf-processor/lib/kaf_processor/exts/oga'
+require_relative '../../kaf-processor/lib/kaf_processor/services/string_cleaner'
+require_relative '../../kaf-processor/lib/kaf_processor/kaf/document'
+require_relative '../../kaf-processor/lib/kaf_processor/kaf/property'
+require_relative '../../kaf-processor/lib/kaf_processor/kaf/sentiment'
+require_relative '../../kaf-processor/lib/kaf_processor/kaf/term'
+require_relative '../../kaf-processor/lib/kaf_processor/kaf/opinion'
+require_relative '../../kaf-processor/lib/kaf_processor/kaf/word_form'
+require_relative '../../kaf-processor/lib/kaf_processor/configuration'
+require_relative '../../kaf-processor/lib/kaf_processor/processor/review_opinions'
+require 'csv'
+
+if ARGV.size != 1
+  puts 'USAGE: chained-daemon-csv file.csv'
+  exit
+end
+
+
+headers = [:review_id, :property, :polarity, :strength, :comment]
+out_csv = CSV.open('/tmp/opinions.csv', 'w', write_headers: true, headers: headers)
+
+CSV.foreach(ARGV.first, headers: true).each do |review|
+	#puts review['comment']
+  cd       = Opener::ChainedDaemon.new
+  output   = cd.run(review['comment'])
+  document = KafProcessor::KAF::Document.from_xml output
+  config   = KafProcessor::Configuration.new identifier: review['id']
+  opinions = KafProcessor::Processor::ReviewOpinions.new(config, document).generate_rows
+  opinions.each do |o|
+    out_csv << [o[:review_id], o[:properties].join(', '), o[:polarity], o[:strength], review['comment']]
+  end
+  if opinions.empty?
+    out_csv << [review['id'], '', '', '', review['comment']]
+  end
+end
+
+out_csv.close
