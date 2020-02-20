@@ -21,7 +21,9 @@ Gem::Specification.new do |spec|
   spec.executables = Dir.glob('bin/*').map { |file| File.basename(file) }
 
   spec.add_dependency 'activesupport'
-  spec.add_dependency 'opener-daemons'
+  spec.add_dependency 'google-cloud-translate', '~> 1.0'
+
+  spec.add_dependency 'opener-daemons', '>= 2.7'
   spec.add_dependency 'opener-callback-handler', '~> 1.0'
 
   spec.add_dependency 'opener-language-identifier'

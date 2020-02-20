@@ -1,5 +1,6 @@
 require 'active_support/all'
 require 'oga'
+require 'google/cloud/translate'
 
 require 'opener/daemons'
 
