@@ -34,7 +34,7 @@ module Opener
         lang = xml.root.attr('xml:lang')
         raise unless lang.in? params[:translate_languages]
 
-        input = translate input, params
+        input = translate xml, params
         retry
       end
 
@@ -52,8 +52,7 @@ module Opener
       output
     end
 
-    def translate input, params
-      xml = Nokogiri.parse input
+    def translate xml, params
       raw = xml.at :raw
       case translate_service params
       when :google
