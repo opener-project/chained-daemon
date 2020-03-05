@@ -15,7 +15,6 @@ module Opener
         'opener-ner':                    Opener::Ner.new,
         'opener-opinion-detector-basic': Opener::OpinionDetectorBasic.new,
       }
-      @last = @queue_map.keys.last
     end
 
     def run input, params = {}
@@ -30,13 +29,6 @@ module Opener
         output = component.run input
         input  = output
 
-        if lang and queue == @last
-          # put back original language
-          xml    = Nokogiri.parse input
-          xml.root.attributes['lang'].value = lang
-          output = xml.to_s
-        end
-
       rescue Core::UnsupportedLanguageError
         xml  = Nokogiri.parse input
         lang = xml.root.attr('xml:lang')
@@ -44,6 +36,13 @@ module Opener
 
         input = translate input, params
         retry
+      end
+
+      if lang
+        # put back original language
+        xml    = Nokogiri.parse output
+        xml.root.attributes['lang'].value = lang
+        output = xml.to_s
       end
 
       output
