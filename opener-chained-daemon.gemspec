@@ -22,6 +22,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'activesupport'
   spec.add_dependency 'google-cloud-translate', '~> 1.0'
+  spec.add_dependency 'httpclient'
+  spec.add_dependency 'hashie'
 
   spec.add_dependency 'opener-daemons', '~> 2.7.1'
   spec.add_dependency 'opener-callback-handler', '~> 1.0'
@@ -37,6 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.3'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'awesome_print'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rack-test'
 end

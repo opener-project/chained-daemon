@@ -57,6 +57,8 @@ module Opener
       case translate_service params
       when :google
         raw.content = google_translator.translate raw.content, to: :en
+      when :microsoft
+        raw.content = microsoft_translator.translate raw.content, to: :en
       else
         raw.content = google_translator.translate raw.content, to: :en
       end
@@ -73,6 +75,10 @@ module Opener
 
     def google_translator
       @google_translator ||= Google::Cloud.new.translate ENV['GOOGLE_TRANSLATE_TOKEN']
+    end
+
+    def microsoft_translator
+      @microsoft_translator ||= MicrosoftTranslator.new
     end
 
     private
