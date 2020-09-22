@@ -31,9 +31,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'opener-language-identifier'
   spec.add_dependency 'opener-tokenizer'
   spec.add_dependency 'opener-pos-tagger'
-  spec.add_dependency 'opener-polarity-tagger'
-  spec.add_dependency 'opener-property-tagger'
-  spec.add_dependency 'opener-ner'
+  spec.add_dependency 'opener-polarity-tagger', '>= 3.1.0'
+  spec.add_dependency 'opener-property-tagger', '>= 3.2.0'
   spec.add_dependency 'opener-opinion-detector-basic'
 
   spec.add_development_dependency 'bundler', '~> 1.3'

@@ -8,7 +8,6 @@ require 'opener/daemons'
 require 'opener/language_identifier'
 require 'opener/tokenizer'
 # require ner before pos_tagger for compatible opennlp
-require 'opener/ner'
 require 'opener/pos_tagger'
 require 'opener/polarity_tagger'
 require 'opener/property_tagger'

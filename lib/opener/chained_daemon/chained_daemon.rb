@@ -12,7 +12,6 @@ module Opener
         'opener-pos-tagger':             Opener::POSTagger.new,
         'opener-polarity-tagger':        Opener::PolarityTagger.new,
         'opener-property-tagger':        Opener::PropertyTagger.new,
-        'opener-ner':                    Opener::Ner.new,
         'opener-opinion-detector-basic': Opener::OpinionDetectorBasic.new,
       }
     end
