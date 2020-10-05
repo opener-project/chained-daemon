@@ -16,4 +16,5 @@ require 'opener/opinion_detector_basic'
 require_relative 'chained_daemon/chained_daemon'
 require_relative 'chained_daemon/cli'
 require_relative 'chained_daemon/microsoft_translator'
+require_relative 'chained_daemon/webservice'
 

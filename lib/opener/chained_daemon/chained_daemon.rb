@@ -20,13 +20,14 @@ module Opener
       params ||= {}
       params.symbolize_keys!
       params[:translate_languages] ||= []
+      params[:cache_keys]          ||= {}
 
       lang     = nil
       output   = nil
       @queue_map.each do |queue, component|
         debug_print queue, input if ENV['DEBUG']
 
-        output = component.run input
+        output = component.run input, params
         input  = output
 
       rescue Core::UnsupportedLanguageError

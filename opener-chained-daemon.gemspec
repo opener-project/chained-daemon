@@ -25,15 +25,16 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'httpclient'
   spec.add_dependency 'hashie'
 
+  spec.add_dependency 'roda'
   spec.add_dependency 'opener-daemons', '~> 2.7.1'
   spec.add_dependency 'opener-callback-handler', '~> 1.0'
 
-  spec.add_dependency 'opener-language-identifier'
-  spec.add_dependency 'opener-tokenizer'
-  spec.add_dependency 'opener-pos-tagger'
-  spec.add_dependency 'opener-polarity-tagger', '>= 3.1.3'
-  spec.add_dependency 'opener-property-tagger', '>= 3.2.1'
-  spec.add_dependency 'opener-opinion-detector-basic'
+  spec.add_dependency 'opener-language-identifier', '>= 4.4.0'
+  spec.add_dependency 'opener-tokenizer',  '>= 2.2.0'
+  spec.add_dependency 'opener-pos-tagger', '>= 3.2.0'
+  spec.add_dependency 'opener-polarity-tagger', '>= 3.2.0'
+  spec.add_dependency 'opener-property-tagger', '>= 3.3.0'
+  spec.add_dependency 'opener-opinion-detector-basic', '>= 3.2.0'
 
   spec.add_development_dependency 'bundler', '~> 1.3'
   spec.add_development_dependency 'rake'
