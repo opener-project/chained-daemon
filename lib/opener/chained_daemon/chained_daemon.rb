@@ -18,7 +18,7 @@ module Opener
 
     def run input, params = {}
       params ||= {}
-      params.symbolize_keys!
+      params.deep_symbolize_keys!
       params[:translate_languages] ||= []
       params[:cache_keys]          ||= {}
 
