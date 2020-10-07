@@ -10,6 +10,7 @@ Gem::Specification.new do |spec|
   spec.license = 'Apache 2.0'
 
   spec.files = Dir.glob([
+    'config/**/*',
     'exec/**/*',
     'lib/**/*',
     '*.gemspec',
@@ -18,7 +19,7 @@ Gem::Specification.new do |spec|
   ]).select{ |file| File.file? file }
 
   spec.bindir = 'bin'
-  spec.executables = Dir.glob('bin/*').map { |file| File.basename(file) }
+  spec.executables = Dir.glob('bin/*').map{ |file| File.basename(file) }
 
   spec.add_dependency 'activesupport'
   spec.add_dependency 'google-cloud-translate', '~> 1.0'
