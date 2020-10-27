@@ -12,9 +12,13 @@ require 'opener/pos_tagger'
 require 'opener/polarity_tagger'
 require 'opener/property_tagger'
 require 'opener/opinion_detector_basic'
+require 'stanza/tokenizer_pos'
 
 require_relative 'chained_daemon/chained_daemon'
 require_relative 'chained_daemon/cli'
 require_relative 'chained_daemon/microsoft_translator'
 require_relative 'chained_daemon/webservice'
+
+require_relative 'chained_daemon/kaf/document'
+require_relative 'chained_daemon/kaf/term'
 
