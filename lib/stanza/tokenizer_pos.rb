@@ -18,6 +18,7 @@ module Stanza
       'PUNCT' => '.',
       'ADP'   => 'P',
       'PRON'  => 'Q',
+      'PROPN' => 'R',
     }
 
     def run input, params
@@ -61,6 +62,8 @@ module Stanza
       kaf.add_linguistic_processor DESC, "#{LAST_EDITED}_#{VERSION}", 'text', timestamp: true
 
       kaf.to_xml
+    rescue JSON::ParserError => e
+      raise Opener::Core::UnsupportedLanguageError, kaf.language
     end
 
   end
