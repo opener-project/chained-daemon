@@ -2,7 +2,6 @@ module Stanza
   class TokenizerPos
 
     DESC        = 'Tokenizer / POS by Stanza'
-    LAST_EDITED = '21oct2020'
     VERSION     = '1.0'
 
     BASE_URL    = "#{ENV['STANZA_SERVER']}/?lang=%{lang}&input=%{input}"
@@ -59,7 +58,7 @@ module Stanza
         end
       end
 
-      kaf.add_linguistic_processor DESC, "#{LAST_EDITED}_#{VERSION}", 'text', timestamp: true
+      kaf.add_linguistic_processor DESC, "#{VERSION}", 'text', timestamp: true
 
       kaf.to_xml
     rescue JSON::ParserError => e
