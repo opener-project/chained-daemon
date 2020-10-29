@@ -7,8 +7,7 @@ require 'opener/daemons'
 
 require 'opener/language_identifier'
 require 'opener/tokenizer'
-# require ner before pos_tagger for compatible opennlp
-require 'opener/pos_tagger'
+require 'opener/pos_tagger' if RUBY_ENGINE == 'jruby'
 require 'opener/polarity_tagger'
 require 'opener/property_tagger'
 require 'opener/opinion_detector_basic'
