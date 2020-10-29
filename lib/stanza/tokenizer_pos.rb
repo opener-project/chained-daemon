@@ -18,6 +18,7 @@ module Stanza
       'ADP'   => 'P',
       'PRON'  => 'Q',
       'PROPN' => 'R',
+      'PART'  => 'P'
     }
 
     def run input, params
