@@ -48,7 +48,15 @@ module Opener
 
       def add_word_form params
         text = @document.at('text') || @document.root.add_child('<text/>').first
-        text.add_child("<wf wid='w#{params[:wid]}' sent='#{params[:sid]}' para='#{params[:para]}' offset='#{params[:offset]}' length='#{params[:length]}' >#{params[:text]}</wf>").first
+        wf   = text.add_child("<wf>#{params[:text]}</wf>")
+        attrs = {
+          wid:    "w#{params[:wid]}",
+          sent:   params[:sid],
+          para:   params[:para],
+          offset: params[:offset],
+          length: params[:length],
+        }
+        wf.attr attrs
       end
 
       def add_term params
