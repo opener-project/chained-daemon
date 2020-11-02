@@ -52,9 +52,17 @@ module Opener
       end
 
       def add_term params
-        text = @document.at('terms') || @document.root.add_child('<terms/>').first
-        term = text.add_child("<term tid='t#{params[:tid]}' type='#{params[:type]}' lemma='#{params[:lemma]}' pos='#{params[:pos]}' morphofeat='#{params[:morphofeat]}' />").first
-        term.add_child("<span><target id='w#{params[:wid]}' /></span>")
+        text  = @document.at('terms') || @document.root.add_child('<terms/>').first
+        term  = text.add_child("<term/>")
+        attrs = {
+          tid:        "t#{params[:tid]}",
+          type:       params[:type],
+          lemma:      params[:lemma],
+          pos:        params[:pos],
+          morphofeat: params[:morphofeat],
+        }
+        term.attr attrs
+        term.first.add_child("<span><target id='w#{params[:wid]}' /></span>")
       end
 
       def to_xml
