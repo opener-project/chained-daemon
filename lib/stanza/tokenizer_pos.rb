@@ -19,7 +19,8 @@ module Stanza
       'PRON'  => 'Q',
       'PROPN' => 'R',
       'PART'  => 'P',
-      'NUM'   => 'O'
+      'NUM'   => 'O',
+      'SCONJ' => 'P'
     }
 
     def run input, params
@@ -38,6 +39,7 @@ module Stanza
           length = misc.match(/end_char=(\d+)/)[1].to_i - offset
 
           u_pos  = word['upos']
+          print word['lemma']
           raise "Didn't find a map for #{u_pos}" if POS[u_pos].nil?
           type   = ['N','R','G','V','A','O'].include?(POS[u_pos]) ? 'open' : 'close'
 
