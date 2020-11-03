@@ -22,7 +22,8 @@ module Stanza
       'NUM'   => 'O',
       'X'     => 'O',
       'SYM'   => 'O',
-      'SCONJ' => 'P'
+      'SCONJ' => 'P',
+      'INTJ'  => 'O',
     }
 
     def run input, params
