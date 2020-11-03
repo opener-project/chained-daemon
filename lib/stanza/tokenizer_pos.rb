@@ -20,6 +20,8 @@ module Stanza
       'PROPN' => 'R',
       'PART'  => 'P',
       'NUM'   => 'O',
+      'X'     => 'O',
+      'SYM'   => 'O',
       'SCONJ' => 'P'
     }
 
