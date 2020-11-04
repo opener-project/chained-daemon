@@ -30,7 +30,8 @@ module Stanza
       kaf      = Opener::KAF::Document.from_xml input
       url      = URI.encode(BASE_URL % { lang: kaf.language, input: kaf.raw })
 
-      response = Faraday.get(url)
+      response = Faraday.get url
+      raise Opener::Core::UnsupportedLanguageError if response.status == 406
       raise response.body if response.status >= 400
       tokens   = JSON.parse response.body
 
