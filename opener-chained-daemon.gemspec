@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'opener-pos-tagger', '>= 3.2.0'
   spec.add_dependency 'opener-polarity-tagger', '>= 3.2.6'
   spec.add_dependency 'opener-property-tagger', '>= 3.3.3'
-  spec.add_dependency 'opener-opinion-detector-basic', '>= 3.2.1'
+  spec.add_dependency 'opener-opinion-detector-basic', '>= 3.2.2'
 
   spec.add_development_dependency 'bundler', '~> 1.3'
   spec.add_development_dependency 'rake'
