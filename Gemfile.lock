@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    opener-chained-daemon (3.0.1)
+    opener-chained-daemon (3.0.2)
       activesupport
       faraday
       google-cloud-translate (~> 1.0)
@@ -11,9 +11,9 @@ PATH
       opener-daemons (~> 2.7.1)
       opener-language-identifier (>= 4.4.0)
       opener-opinion-detector-basic (>= 3.2.1)
-      opener-polarity-tagger (>= 3.2.3)
+      opener-polarity-tagger (>= 3.2.4)
       opener-pos-tagger (>= 3.2.0)
-      opener-property-tagger (>= 3.3.0)
+      opener-property-tagger (>= 3.3.3)
       opener-tokenizer (>= 2.2.0)
       rack-timeout
       roda
@@ -35,13 +35,13 @@ GEM
     ast (2.4.1)
     awesome_print (1.8.0)
     aws-eventstream (1.1.0)
-    aws-sdk (2.11.618)
-      aws-sdk-resources (= 2.11.618)
-    aws-sdk-core (2.11.618)
+    aws-sdk (2.11.619)
+      aws-sdk-resources (= 2.11.619)
+    aws-sdk-core (2.11.619)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.618)
-      aws-sdk-core (= 2.11.618)
+    aws-sdk-resources (2.11.619)
+      aws-sdk-core (= 2.11.619)
     aws-sigv4 (1.2.2)
       aws-eventstream (~> 1, >= 1.0.2)
     builder (3.2.4)
@@ -132,7 +132,7 @@ GEM
       opener-core (~> 2.2)
       opener-daemons (~> 2.2)
       opener-webservice (~> 2.1)
-    opener-polarity-tagger (3.2.3)
+    opener-polarity-tagger (3.2.4)
       activesupport
       cliver
       hashie
@@ -155,7 +155,7 @@ GEM
       rake
     opener-pos-tagger-en-es (2.0.3)
       nokogiri
-    opener-property-tagger (3.3.2)
+    opener-property-tagger (3.3.3)
       activesupport
       hashie
       httpclient
