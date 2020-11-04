@@ -12,14 +12,16 @@ module Opener
       route do |r|
         response.status = 403 and r.halt if r.params['auth_token'] != TOKEN
 
-        r.get 'sentiment.kaf' do
-          params = r.params.except 'input'
-          params.deep_symbolize_keys!
-          kaf    = processor.run r.params['input'], **params
+        sentiment = -> do
+          r.params.deep_symbolize_keys!
+          kaf = processor.run r.params[:input], **r.params.except(:input)
 
           response['Content-Type'] = 'text/xml'
           kaf
         end
+
+        r.get  'sentiment.kaf', &sentiment
+        r.post 'sentiment.kaf', &sentiment
       end
 
       def clear_cache
