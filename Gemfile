@@ -16,3 +16,6 @@ gem 'opener-polarity-tagger',        path: path_for('polarity-tagger')
 gem 'opener-property-tagger',        path: path_for('property-tagger')
 gem 'opener-opinion-detector-basic', path: path_for('opinion-detector-basic')
 
+group :development do
+  gem 'shotgun'
+end

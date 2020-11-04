@@ -11,7 +11,7 @@ require 'opener/pos_tagger' if RUBY_ENGINE == 'jruby'
 require 'opener/polarity_tagger'
 require 'opener/property_tagger'
 require 'opener/opinion_detector_basic'
-require 'stanza/tokenizer_pos'
+require 'opener/stanza/tokenizer_pos'
 
 require_relative 'chained_daemon/chained_daemon'
 require_relative 'chained_daemon/cli'
