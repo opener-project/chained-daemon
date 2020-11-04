@@ -27,6 +27,8 @@ module Stanza
     }
 
     def run input, params
+      raise 'missing Stanza server' if ENV['STANZA_SERVER'].blank?
+
       kaf      = Opener::KAF::Document.from_xml input
       url      = URI.encode(BASE_URL % { lang: kaf.language, input: kaf.raw })
 

@@ -21,7 +21,7 @@ module Opener
       params ||= {}
       params.deep_symbolize_keys!
       params[:translate_languages] ||= []
-      params[:cache_keys]          ||= {}
+      params[:cache_keys] = params[:cache_keys]&.sort&.to_h || {}
 
       lang     = nil
       output   = nil
