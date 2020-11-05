@@ -47,8 +47,9 @@ module Opener
             length = misc.match(/end_char=(\d+)/)[1].to_i - offset
 
             u_pos  = word['upos']
-            raise "Didn't find a map for #{u_pos}" if POS[u_pos].nil?
-            type   = if POS_OPEN.include? POS[u_pos] then 'open' else 'close' end
+            pos    = POS[u_pos]
+            raise "Didn't find a map for #{u_pos}" if pos.nil?
+            type   = if POS_OPEN.include? pos then 'open' else 'close' end
 
             params = {
               wid:        w_index,
@@ -60,7 +61,7 @@ module Opener
               text:       word['text'],
               lemma:      word['lemma'],
               morphofeat: u_pos,
-              pos:        POS[u_pos],
+              pos:        pos,
               type:       type,
             }
 
