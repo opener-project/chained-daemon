@@ -66,6 +66,7 @@ module Opener
           tid:        "t#{params[:tid]}",
           type:       params[:type],
           lemma:      params[:lemma],
+          text:       params[:text],
           pos:        params[:pos],
           morphofeat: params[:morphofeat],
         }
