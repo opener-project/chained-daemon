@@ -18,6 +18,6 @@ require_relative 'chained_daemon/cli'
 require_relative 'chained_daemon/microsoft_translator'
 require_relative 'chained_daemon/webservice'
 
-require_relative 'chained_daemon/kaf/document'
-require_relative 'chained_daemon/kaf/term'
+require_relative 'kaf/document'
+require_relative 'kaf/term'
 

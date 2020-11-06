@@ -27,6 +27,8 @@ module Opener
         'INTJ'  => 'O',
       }
 
+      POS_OPEN = %w[N R G V A O]
+
       def run input, params
         raise 'missing Stanza server' if ENV['STANZA_SERVER'].blank?
 
@@ -45,9 +47,9 @@ module Opener
             length = misc.match(/end_char=(\d+)/)[1].to_i - offset
 
             u_pos  = word['upos']
-            print word['lemma']
-            raise "Didn't find a map for #{u_pos}" if POS[u_pos].nil?
-            type   = ['N','R','G','V','A','O'].include?(POS[u_pos]) ? 'open' : 'close'
+            pos    = POS[u_pos]
+            raise "Didn't find a map for #{u_pos}" if pos.nil?
+            type   = if POS_OPEN.include? pos then 'open' else 'close' end
 
             params = {
               wid:        w_index,
@@ -59,7 +61,7 @@ module Opener
               text:       word['text'],
               lemma:      word['lemma'],
               morphofeat: u_pos,
-              pos:        POS[u_pos],
+              pos:        pos,
               type:       type,
             }
 

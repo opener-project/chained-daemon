@@ -24,9 +24,6 @@ module Opener
         r.post 'sentiment.kaf', &sentiment
       end
 
-      def clear_cache
-      end
-
     end
   end
 end
