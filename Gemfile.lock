@@ -8,7 +8,7 @@ PATH
       hashie
       httpclient
       opener-callback-handler (~> 1.0)
-      opener-daemons (~> 2.7.1)
+      opener-daemons (~> 2.7.2)
       opener-language-identifier (>= 4.4.0)
       opener-opinion-detector-basic (>= 3.2.3)
       opener-polarity-tagger (>= 3.2.7)
@@ -108,7 +108,7 @@ GEM
       archive
       httpclient
       slop (~> 3.0)
-    opener-daemons (2.7.1)
+    opener-daemons (2.7.2)
       aws-sdk (~> 2.0)
       httpclient (~> 2.0, >= 2.5.3.3)
       json-schema

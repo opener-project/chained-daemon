@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'roda'
   spec.add_dependency 'rack-timeout'
   spec.add_dependency 'faraday'
-  spec.add_dependency 'opener-daemons', '~> 2.7.1'
+  spec.add_dependency 'opener-daemons', '~> 2.7.2'
   spec.add_dependency 'opener-callback-handler', '~> 1.0'
 
   spec.add_dependency 'opener-language-identifier', '>= 4.4.0'
