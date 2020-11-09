@@ -5,6 +5,7 @@ require 'google/cloud/translate'
 
 require 'opener/daemons'
 
+require_relative 'chained_daemon/languages_cache'
 require 'opener/language_identifier'
 require 'opener/tokenizer'
 require 'opener/pos_tagger' if RUBY_ENGINE == 'jruby'

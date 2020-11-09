@@ -2,12 +2,13 @@ module Opener
   module Stanza
     class TokenizerPos
 
-      DESC     = 'Tokenizer / POS by Stanza'
-      VERSION  = '1.0'
+      DESC            = 'Tokenizer / POS by Stanza'
+      VERSION         = '1.0'
 
-      BASE_URL = ENV['STANZA_SERVER']
+      BASE_URL        = ENV['STANZA_SERVER']
+      LANGUAGES_CACHE = Opener::ChainedDaemon::LanguagesCache.new
 
-      POS      = {
+      POS             = {
         'DET'   => 'D',
         'ADJ'   => 'G',
         'NOUN'  => 'N',
@@ -27,12 +28,17 @@ module Opener
         'INTJ'  => 'O',
       }
 
-      POS_OPEN = %w[N R G V A O]
+      POS_OPEN        = %w[N R G V A O]
 
       def run input, params
         raise 'missing Stanza server' if ENV['STANZA_SERVER'].blank?
 
         kaf      = KAF::Document.from_xml input
+
+        unless LANGUAGES_CACHE.get.include? kaf.language
+          raise Core::UnsupportedLanguageError.new kaf.language
+        end
+
         response = Faraday.post BASE_URL, {lang: kaf.language, input: kaf.raw}.to_query
         raise Core::UnsupportedLanguageError, kaf.language if response.status == 406
         raise response.body if response.status >= 400
