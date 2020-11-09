@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    opener-chained-daemon (3.0.3)
+    opener-chained-daemon (3.0.5)
       activesupport
       faraday
       google-cloud-translate (~> 1.0)
@@ -10,7 +10,7 @@ PATH
       opener-callback-handler (~> 1.0)
       opener-daemons (~> 2.7.1)
       opener-language-identifier (>= 4.4.0)
-      opener-opinion-detector-basic (>= 3.2.2)
+      opener-opinion-detector-basic (>= 3.2.3)
       opener-polarity-tagger (>= 3.2.7)
       opener-pos-tagger (>= 3.2.0)
       opener-property-tagger (>= 3.3.4)
@@ -35,13 +35,13 @@ GEM
     ast (2.4.1)
     awesome_print (1.8.0)
     aws-eventstream (1.1.0)
-    aws-sdk (2.11.622)
-      aws-sdk-resources (= 2.11.622)
-    aws-sdk-core (2.11.622)
+    aws-sdk (2.11.623)
+      aws-sdk-resources (= 2.11.623)
+    aws-sdk-core (2.11.623)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.622)
-      aws-sdk-core (= 2.11.622)
+    aws-sdk-resources (2.11.623)
+      aws-sdk-core (= 2.11.623)
     aws-sigv4 (1.2.2)
       aws-eventstream (~> 1, >= 1.0.2)
     builder (3.2.4)
@@ -127,8 +127,8 @@ GEM
       opener-daemons (~> 2.5, >= 2.5.6)
       opener-webservice (~> 2.1)
       slop (~> 3.5)
-    opener-opinion-detector-basic (3.2.2)
-      oga (~> 1.0, >= 1.3.1)
+    opener-opinion-detector-basic (3.2.3)
+      nokogiri
       opener-core (~> 2.2)
       opener-daemons (~> 2.2)
       opener-webservice (~> 2.1)
