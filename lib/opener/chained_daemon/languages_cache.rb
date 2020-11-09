@@ -23,7 +23,7 @@ module Opener
       end
 
       def cache_update
-        puts "loading supported languages from url #{@url}"
+        puts "loading supported languages from url #{@url}" if ENV['DEBUG']
 
         languages     = JSON.parse http.get(@url).body
         @cache        = languages['data'].map { |l| l['code'] }
