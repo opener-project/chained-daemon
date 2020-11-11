@@ -47,7 +47,14 @@ Example:
           run do |opts, args|
             daemon = ChainedDaemon.new args: args
             input  = STDIN.tty? ? nil : STDIN.read
-            params = JSON.parse ENV['PARAMS'] if ENV['PARAMS']
+
+            params = if ENV['PARAMS']
+                       JSON.parse ENV['PARAMS']
+                     else
+                       {}
+                     end
+            # Set environment as staging from console for testing purposes
+            params[:cache_keys] = { environment: 'staging', merged: true }
 
             puts daemon.run input, params || {}
           end
