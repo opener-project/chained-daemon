@@ -35,7 +35,8 @@ module Opener
 
         kaf      = KAF::Document.from_xml input
 
-        unless LANGUAGES_CACHE.get.include? kaf.language
+        prod     = params[:cache_keys][:environment] != 'staging'
+        if prod and !LANGUAGES_CACHE.get.include?(kaf.language)
           raise Core::UnsupportedLanguageError.new kaf.language
         end
 
