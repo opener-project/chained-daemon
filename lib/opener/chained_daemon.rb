@@ -3,6 +3,9 @@ require 'oga'
 require 'hashie'
 require 'google/cloud/translate'
 
+require 'rexml/document'
+require 'rexml/formatters/pretty'
+
 require 'opener/daemons'
 
 require_relative 'chained_daemon/languages_cache'

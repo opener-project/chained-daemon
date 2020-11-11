@@ -47,11 +47,22 @@ module Opener
         output = xml.to_s
       end
 
-      output
+      pretty_print output
 
     rescue Core::UnsupportedLanguageError
       puts "Error on unsupported language: #{input}" if ENV['DEBUG']
       output
+    end
+
+    def pretty_print(output)
+      doc = REXML::Document.new output
+      doc.context[:attribute_quote] = :quote
+      out = ""
+      formatter = REXML::Formatters::Pretty.new
+      formatter.compact = true
+      formatter.write(doc, out)
+
+      out.strip
     end
 
     def translate xml, params
