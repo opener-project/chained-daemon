@@ -8,6 +8,9 @@ module Opener
       BASE_URL        = ENV['STANZA_SERVER']
       LANGUAGES_CACHE = Opener::ChainedDaemon::LanguagesCache.new
 
+      RTL_LANGUAGES   = [ "ar", "ara", "arc", "ae", "ave", "egy", "he", "heb", "nqo", "pal", "phn", "sam",
+                          "syc", "syr", "fa", "per", "fas", "ku", "kur", "ur", "urd" ]
+
       POS             = {
         'DET'   => 'D',
         'ADJ'   => 'G',
@@ -46,6 +49,8 @@ module Opener
         tokens   = JSON.parse response.body
 
         w_index = 0
+
+        tokens.map{ |t| t.reverse! } if RTL_LANGUAGES.include? kaf.language
         tokens.each_with_index do |sentence, s_index|
           sentence.each_with_index do |word|
             w_index += 1
