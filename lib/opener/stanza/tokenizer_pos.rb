@@ -52,13 +52,20 @@ module Opener
 
         tokens.map{ |t| t.reverse! } if RTL_LANGUAGES.include? kaf.language
         tokens.each_with_index do |sentence, s_index|
+          text = nil
+          misc = nil
           sentence.each_with_index do |word|
             w_index += 1
-            misc   = word['misc']
+            # fallback to previous token due to MWT
+            text = word['text'] || text
+            misc = word['misc'] || misc
+            next if misc.nil?
+
             offset = misc.match(/start_char=(\d+)|/)[1].to_i
             length = misc.match(/end_char=(\d+)/)[1].to_i - offset
 
             u_pos  = word['upos']
+            next if u_pos.nil? # MWT
             pos    = POS[u_pos]
             raise "Didn't find a map for #{u_pos}" if pos.nil?
             type   = if POS_OPEN.include? pos then 'open' else 'close' end
@@ -70,7 +77,7 @@ module Opener
               para:       1,
               offset:     offset,
               length:     length,
-              text:       word['text'],
+              text:       text,
               lemma:      word['lemma'],
               morphofeat: u_pos,
               pos:        pos,
