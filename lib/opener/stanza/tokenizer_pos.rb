@@ -74,7 +74,7 @@ module Opener
               para:       1,
               offset:     offset,
               length:     length,
-              text:       text,
+              text:       word['text'],
               lemma:      word['lemma'],
               morphofeat: u_pos,
               pos:        pos,
