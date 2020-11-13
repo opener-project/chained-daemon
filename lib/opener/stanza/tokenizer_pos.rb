@@ -52,19 +52,24 @@ module Opener
 
         tokens.map{ |t| t.reverse! } if RTL_LANGUAGES.include? kaf.language
         tokens.each_with_index do |sentence, s_index|
-          misc = nil
+          miscs = {}
           sentence.each_with_index do |word|
             w_index += 1
             # save misc for later usase in a MWT case
-            misc = word['misc'] || misc
-            next if word['id'].is_a? Array
+            if word['id'].is_a? Array
+              miscs['id'].each { |id| miscs[id] = word['misc'] }
+              next
+            end
+            misc = word['misc'] || miscs[word['id']]
 
             offset = misc.match(/start_char=(\d+)|/)[1].to_i
             length = misc.match(/end_char=(\d+)/)[1].to_i - offset
 
             u_pos  = word['upos']
             pos    = POS[u_pos]
-            raise "Didn't find a map for #{u_pos}" if pos.nil?
+            Rollbar.scoped({ input: input, params: params, tokens: tokens }) do
+              raise "Didn't find a map for #{u_pos}"
+            end if pos.nil?
             type   = if POS_OPEN.include? pos then 'open' else 'close' end
 
             params = {
