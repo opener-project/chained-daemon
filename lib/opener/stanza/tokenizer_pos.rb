@@ -57,7 +57,7 @@ module Opener
             w_index += 1
             # save misc for later usase in a MWT case
             if word['id'].is_a? Array
-              miscs['id'].each { |id| miscs[id] = word['misc'] }
+              word['id'].each { |id| miscs[id] = word['misc'] }
               next
             end
             misc = word['misc'] || miscs[word['id']]
