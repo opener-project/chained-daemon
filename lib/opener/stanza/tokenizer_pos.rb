@@ -62,14 +62,16 @@ module Opener
             end
             misc = word['misc'] || miscs[word['id']]
 
+            Rollbar.scoped({ input: input, params: params, tokens: tokens, word: word }) do
+              raise 'Missing misc'
+            end if misc.nil?
+
             offset = misc.match(/start_char=(\d+)|/)[1].to_i
             length = misc.match(/end_char=(\d+)/)[1].to_i - offset
 
             u_pos  = word['upos']
             pos    = POS[u_pos]
-            Rollbar.scoped({ input: input, params: params, tokens: tokens }) do
-              raise "Didn't find a map for #{u_pos}"
-            end if pos.nil?
+            raise "Didn't find a map for #{u_pos}" if pos.nil?
             type   = if POS_OPEN.include? pos then 'open' else 'close' end
 
             params = {
