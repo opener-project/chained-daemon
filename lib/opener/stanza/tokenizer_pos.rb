@@ -43,7 +43,9 @@ module Opener
           raise Core::UnsupportedLanguageError.new kaf.language
         end
 
-        response = Faraday.post BASE_URL, {lang: kaf.language, input: kaf.raw}.to_query
+        input    = kaf.raw
+        input    = input.gsub(/\,[^\ ]/, ', ')
+        response = Faraday.post BASE_URL, {lang: kaf.language, input: input}.to_query
         raise Core::UnsupportedLanguageError, kaf.language if response.status == 406
         raise response.body if response.status >= 400
         tokens   = JSON.parse response.body
