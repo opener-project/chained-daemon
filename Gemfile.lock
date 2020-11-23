@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    opener-chained-daemon (3.0.5)
+    opener-chained-daemon (3.1.3)
       activesupport
       faraday
       google-cloud-translate (~> 1.0)
@@ -13,7 +13,7 @@ PATH
       opener-opinion-detector-basic (>= 3.2.3)
       opener-polarity-tagger (>= 3.2.7)
       opener-pos-tagger (>= 3.2.0)
-      opener-property-tagger (>= 3.3.4)
+      opener-property-tagger (>= 3.3.5)
       opener-tokenizer (>= 2.2.0)
       rack-timeout
       roda
@@ -35,13 +35,13 @@ GEM
     ast (2.4.1)
     awesome_print (1.8.0)
     aws-eventstream (1.1.0)
-    aws-sdk (2.11.623)
-      aws-sdk-resources (= 2.11.623)
-    aws-sdk-core (2.11.623)
+    aws-sdk (2.11.632)
+      aws-sdk-resources (= 2.11.632)
+    aws-sdk-core (2.11.632)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.623)
-      aws-sdk-core (= 2.11.623)
+    aws-sdk-resources (2.11.632)
+      aws-sdk-core (= 2.11.632)
     aws-sigv4 (1.2.2)
       aws-eventstream (~> 1, >= 1.0.2)
     builder (3.2.4)
@@ -87,7 +87,7 @@ GEM
     minitest (5.14.2)
     multi_json (1.15.0)
     multipart-post (2.1.1)
-    newrelic_rpm (6.13.1)
+    newrelic_rpm (6.14.0)
     nio4r (2.5.4)
     nio4r (2.5.4-java)
     nokogiri (1.10.10)
@@ -119,7 +119,7 @@ GEM
       opener-core (~> 2.3)
       rollbar (~> 1.0)
       slop (~> 3.0)
-    opener-language-identifier (4.4.0)
+    opener-language-identifier (4.4.1)
       builder
       detect_language
       newrelic_rpm
@@ -155,7 +155,7 @@ GEM
       rake
     opener-pos-tagger-en-es (2.0.3)
       nokogiri
-    opener-property-tagger (3.3.4)
+    opener-property-tagger (3.3.5)
       activesupport
       hashie
       httpclient
@@ -201,7 +201,7 @@ GEM
       rack (>= 1.0, < 3)
     rack-timeout (0.6.0)
     rake (13.0.1)
-    roda (3.37.0)
+    roda (3.38.0)
       rack
     rollbar (1.5.3)
       multi_json (~> 1.3)
