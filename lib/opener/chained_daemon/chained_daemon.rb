@@ -11,8 +11,8 @@ module Opener
         'stanza-tokenizer-pos':          Stanza::TokenizerPos.new, # replace this tokenizer-pos with both below with you dont have a stanza server
         #'opener-tokenizer':              Opener::Tokenizer.new,
         #'opener-pos-tagger':             Opener::POSTagger.new,
-        'opener-polarity-tagger':        Opener::PolarityTagger.new,
         'opener-property-tagger':        Opener::PropertyTagger.new,
+        'opener-polarity-tagger':        Opener::PolarityTagger.new,
         'opener-opinion-detector-basic': Opener::OpinionDetectorBasic.new,
       }
     end
