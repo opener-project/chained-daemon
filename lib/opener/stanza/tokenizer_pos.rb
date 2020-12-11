@@ -54,12 +54,9 @@ module Opener
 
         miscs = {}
         tokens.each_with_index do |t, i|
-          miscs[i] ||= {}
+          miscs[i] = {}
           t.each do |word|
-            word['id'].is_a?(Array) && word['id'].each do |id|
-              puts id
-              miscs[i][id] = word['misc']
-            end
+            word['id'].is_a?(Array) && word['id'].each { |id| miscs[i][id] = word['misc'] }
           end
         end
 
