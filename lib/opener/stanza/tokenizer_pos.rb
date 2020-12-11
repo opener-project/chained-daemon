@@ -52,17 +52,25 @@ module Opener
 
         w_index = 0
 
+        miscs = {}
+        tokens.each_with_index do |t, i|
+          miscs[i] ||= {}
+          t.each do |word|
+            word['id'].is_a?(Array) && word['id'].each do |id|
+              puts id
+              miscs[i][id] = word['misc']
+            end
+          end
+        end
+
         tokens.map{ |t| t.reverse! } if RTL_LANGUAGES.include? kaf.language
         tokens.each_with_index do |sentence, s_index|
-          miscs = {}
           sentence.each_with_index do |word|
             w_index += 1
             # save misc for later usase in a MWT case
-            if word['id'].is_a? Array
-              word['id'].each { |id| miscs[id] = word['misc'] }
-              next
-            end
-            misc = word['misc'] || miscs[word['id']]
+            next if word['id'].is_a? Array
+
+            misc = word['misc'] || miscs[s_index][word['id']]
 
             Rollbar.scoped({ input: input, params: params, tokens: tokens, word: word }) do
               raise 'Missing misc'
