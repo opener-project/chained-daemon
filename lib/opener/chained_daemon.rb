@@ -8,6 +8,8 @@ require 'rexml/formatters/pretty'
 
 require 'opener/daemons'
 
+require_relative 'sym_mash'
+
 require_relative 'chained_daemon/languages_cache'
 require 'opener/language_identifier'
 require 'opener/tokenizer'

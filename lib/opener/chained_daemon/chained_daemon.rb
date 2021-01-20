@@ -17,11 +17,13 @@ module Opener
       }
     end
 
-    def run input, params = {}
-      params ||= {}
-      params.deep_symbolize_keys!
-      params[:translate_languages] ||= []
-      params[:cache_keys] = params[:cache_keys]&.sort&.to_h || {}
+    def run input, _params = {}
+      params = SymMash.new _params
+      params.translate_languages ||= []
+      params.cache_keys = SymMash.new params.cache_keys&.to_h&.sort&.to_h || {}
+      if params.filter_vertical and params.property_type.present?
+        params.cache_keys.property_type = params.property_type
+      end
 
       lang     = nil
       output   = nil
@@ -34,7 +36,7 @@ module Opener
       rescue Core::UnsupportedLanguageError
         xml  = Nokogiri.parse input
         lang = xml.root.attr('xml:lang')
-        raise unless lang.in? params[:translate_languages]
+        raise unless lang.in? params.translate_languages
 
         input = translate xml, params
         retry
@@ -47,7 +49,7 @@ module Opener
         output = xml.to_s
       end
 
-      output = pretty_print output if params[:cache_keys][:environment] == 'staging'
+      output = pretty_print output if params.cache_keys&.environment == 'staging'
       output
 
     rescue Core::UnsupportedLanguageError
@@ -84,7 +86,7 @@ module Opener
     protected
 
     def translate_service params
-      params[:translate_service]&.to_sym || :google
+      params.translate_service&.to_sym || :google
     end
 
     def google_translator

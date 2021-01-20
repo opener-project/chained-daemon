@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    opener-chained-daemon (3.1.4)
+    opener-chained-daemon (3.1.5)
       activesupport
       faraday
       google-cloud-translate (~> 1.0)
