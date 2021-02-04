@@ -24,6 +24,7 @@ module Opener
       if params.filter_vertical and params.property_type.present?
         params.cache_keys.property_type = params.property_type
       end
+      params.cache_keys.environment ||= 'production'
 
       lang     = nil
       output   = nil

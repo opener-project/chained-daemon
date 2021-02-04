@@ -38,7 +38,7 @@ module Opener
 
         kaf      = KAF::Document.from_xml input
 
-        prod     = params[:cache_keys][:environment] == 'production'
+        prod     = params.cache_keys.environment == 'production'
         if prod and !LANGUAGES_CACHE.get.include?(kaf.language)
           raise Core::UnsupportedLanguageError.new kaf.language
         end
