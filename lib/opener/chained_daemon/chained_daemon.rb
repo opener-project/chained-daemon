@@ -50,7 +50,7 @@ module Opener
         output = xml.to_s
       end
 
-      output = pretty_print output if params.cache_keys&.environment == 'staging'
+      output = pretty_print output if params.cache_keys.environment == 'staging'
       output
 
     rescue Core::UnsupportedLanguageError

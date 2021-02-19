@@ -19,15 +19,15 @@ module Opener
           break @cache if @last_updated and @last_updated > UPDATE_INTERVAL.ago
           cache_update
         end
-        @cache
       end
 
       def cache_update
         puts "loading supported languages from url #{@url}" if ENV['DEBUG']
 
-        languages     = JSON.parse http.get(@url).body
-        @cache        = languages['data'].map { |l| l['code'] }
+        languages     = SymMash.new JSON.parse http.get(@url).body
         @last_updated = Time.now
+        @cache        = languages.data.each.with_object({}){ |l,h| h[l.code] = l }
+        @cache
       end
 
       def http

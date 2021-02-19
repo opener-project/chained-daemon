@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    opener-chained-daemon (3.3.1)
+    opener-chained-daemon (3.3.2)
       activesupport
       faraday
       google-cloud-translate (~> 1.0)
@@ -85,8 +85,8 @@ GEM
     multi_json (1.15.0)
     multipart-post (2.1.1)
     newrelic_rpm (6.15.0)
-    nio4r (2.5.4)
-    nio4r (2.5.4-java)
+    nio4r (2.5.5)
+    nio4r (2.5.5-java)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
@@ -188,9 +188,9 @@ GEM
       method_source (~> 1.0)
       spoon (~> 0.0)
     public_suffix (4.0.6)
-    puma (5.2.0)
+    puma (5.2.1)
       nio4r (~> 2.0)
-    puma (5.2.0-java)
+    puma (5.2.1-java)
       nio4r (~> 2.0)
     racc (1.5.2)
     racc (1.5.2-java)

@@ -37,9 +37,9 @@ module Opener
         raise 'missing Stanza server' if ENV['STANZA_SERVER'].blank?
 
         kaf      = KAF::Document.from_xml input
-
-        prod     = params.cache_keys.environment == 'production'
-        if prod and !LANGUAGES_CACHE.get.include?(kaf.language)
+        lang     = LANGUAGES_CACHE.get[kaf.language]
+        env      = params.cache_keys.environment
+        unless lang&.environments&.include? env or (env == 'staging' and lang&.environments&.include? 'production')
           raise Core::UnsupportedLanguageError.new kaf.language
         end
 
