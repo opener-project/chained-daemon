@@ -51,9 +51,11 @@ Example:
 
             # Set environment as staging from console for testing purposes
             env = ENV['LEXICONS_ENV'] || 'staging'
+            pt  = ENV['LEXICONS_PROPERTY_TYPE']
             params[:cache_keys] = {
-              environment: env,
-              merged:      (true if env == 'staging'),
+              environment:   env,
+              property_type: pt,
+              merged:        (true if env == 'staging'),
             }
 
             output = daemon.run input, params
