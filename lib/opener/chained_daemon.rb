@@ -12,12 +12,10 @@ require_relative 'sym_mash'
 
 require_relative 'chained_daemon/languages_cache'
 require 'opener/language_identifier'
-require 'opener/tokenizer'
-require 'opener/pos_tagger' if RUBY_ENGINE == 'jruby'
 require 'opener/polarity_tagger'
 require 'opener/property_tagger'
 require 'opener/opinion_detector_basic'
-require 'opener/stanza/tokenizer_pos'
+require 'opener/stanza/processor'
 
 require_relative 'chained_daemon/chained_daemon'
 require_relative 'chained_daemon/cli'

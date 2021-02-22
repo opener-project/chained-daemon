@@ -48,13 +48,14 @@ module Opener
 
       def add_word_form params
         text = @document.at('text') || @document.root.add_child('<text/>').first
-        wf   = text.add_child("<wf>#{params[:text]}</wf>")
+        wf   = text.add_child("<wf>#{params.text}</wf>")
         attrs = {
-          wid:    "w#{params[:wid]}",
-          sent:   params[:sid],
-          para:   params[:para],
-          offset: params[:offset],
-          length: params[:length],
+          wid:    "w#{params.wid}",
+          sent:   params.sid,
+          para:   params.para,
+          offset: params.offset,
+          length: params.length,
+          head:   params.head,
         }
         wf.attr attrs
       end
@@ -63,15 +64,16 @@ module Opener
         text  = @document.at('terms') || @document.root.add_child('<terms/>').first
         term  = text.add_child("<term/>")
         attrs = {
-          tid:        "t#{params[:tid]}",
-          type:       params[:type],
-          lemma:      params[:lemma],
-          text:       params[:text],
-          pos:        params[:pos],
-          morphofeat: params[:morphofeat],
+          tid:        "t#{params.tid}",
+          type:       params.type,
+          lemma:      params.lemma,
+          text:       params.text,
+          pos:        params.pos,
+          morphofeat: params.morphofeat,
+          head:       params.head,
         }
         term.attr attrs
-        term.first.add_child("<span><target id='w#{params[:wid]}' /></span>")
+        term.first.add_child("<span><target id='w#{params.wid}'/></span>")
       end
 
       def to_xml

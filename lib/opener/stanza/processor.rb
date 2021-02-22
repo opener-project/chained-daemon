@@ -1,6 +1,6 @@
 module Opener
   module Stanza
-    class TokenizerPos
+    class Processor
 
       DESC            = 'Tokenizer / POS by Stanza'
       VERSION         = '1.0'
@@ -8,8 +8,10 @@ module Opener
       BASE_URL        = ENV['STANZA_SERVER']
       LANGUAGES_CACHE = Opener::ChainedDaemon::LanguagesCache.new
 
-      RTL_LANGUAGES   = [ "ar", "ara", "arc", "ae", "ave", "egy", "he", "heb", "nqo", "pal", "phn", "sam",
-                          "syc", "syr", "fa", "per", "fas", "ku", "kur", "ur", "urd" ]
+      RTL_LANGUAGES   = %w[
+        ar ara arc ae ave egy he heb nqo pal phn sam
+        syc syr fa per fas ku kur ur urd
+      ]
 
       POS             = {
         'DET'   => 'D',
@@ -43,57 +45,59 @@ module Opener
           raise Core::UnsupportedLanguageError.new kaf.language
         end
 
-        input    = kaf.raw
-        input    = input.gsub(/\,[^\ ]/, ', ')
-        response = Faraday.post BASE_URL, {lang: kaf.language, input: input}.to_query
+        input     = kaf.raw
+        input     = input.gsub(/\,[^\ ]/, ', ')
+        response  = Faraday.post BASE_URL, {lang: kaf.language, input: input}.to_query
         raise Core::UnsupportedLanguageError, kaf.language if response.status == 406
         raise response.body if response.status >= 400
-        tokens   = JSON.parse response.body
+        sentences = JSON.parse response.body
+        sentences.each{ |s| s.map!{ |t| Hashie::Mash.new t } }
 
         w_index = 0
 
         miscs = {}
-        tokens.each_with_index do |t, i|
+        sentences.each.with_index do |s, i|
           miscs[i] = {}
-          t.each do |word|
-            word['id'].is_a?(Array) && word['id'].each { |id| miscs[i][id] = word['misc'] }
+          s.each do |word|
+            word.id.is_a?(Array) && word.id.each{ |id| miscs[i][id] = word.misc }
           end
         end
 
-        tokens.map{ |t| t.reverse! } if RTL_LANGUAGES.include? kaf.language
-        tokens.each_with_index do |sentence, s_index|
-          sentence.each_with_index do |word|
+        sentences.map{ |s| s.reverse! } if RTL_LANGUAGES.include? kaf.language
+        sentences.each.with_index do |s, s_index|
+          s.each do |word|
             w_index += 1
             # save misc for later usase in a MWT case
-            next if word['id'].is_a? Array
+            next if word.id.is_a? Array
 
-            misc = word['misc'] || miscs[s_index][word['id']]
+            misc = word.misc || miscs[s_index][word.id]
 
-            Rollbar.scoped({ input: input, params: params, tokens: tokens, word: word }) do
+            Rollbar.scoped({ input: input, params: params, sentences: sentences, word: word }) do
               raise 'Missing misc'
             end if misc.nil?
 
             offset = misc.match(/start_char=(\d+)|/)[1].to_i
             length = misc.match(/end_char=(\d+)/)[1].to_i - offset
 
-            u_pos  = word['upos']
+            u_pos  = word.upos
             pos    = POS[u_pos]
             raise "Didn't find a map for #{u_pos}" if pos.nil?
             type   = if POS_OPEN.include? pos then 'open' else 'close' end
 
-            params = {
+            params = Hashie::Mash.new(
               wid:        w_index,
               sid:        s_index + 1,
               tid:        w_index,
               para:       1,
               offset:     offset,
               length:     length,
-              text:       word['text'],
-              lemma:      word['lemma'],
+              text:       word.text,
+              lemma:      word.lemma,
               morphofeat: u_pos,
               pos:        pos,
               type:       type,
-            }
+              head:       word.head,
+            )
 
             kaf.add_word_form params
             kaf.add_term params

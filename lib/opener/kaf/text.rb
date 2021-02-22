@@ -1,6 +1,7 @@
 module Opener
   module KAF
     class WordForm
+
       def initialize(document, xml_node)
         @document = document
         @xml_node = xml_node
@@ -25,6 +26,7 @@ module Opener
       def paragraph
         return @paragraph ||= @xml_node.attr('para').to_i
       end
+
     end
   end
 end
