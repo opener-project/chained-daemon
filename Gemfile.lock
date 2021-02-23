@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    opener-chained-daemon (3.3.2)
+    opener-chained-daemon (3.3.4)
       activesupport
       faraday
       google-cloud-translate (~> 1.0)
@@ -11,7 +11,7 @@ PATH
       opener-daemons (~> 2.7.2)
       opener-language-identifier (>= 4.4.0)
       opener-opinion-detector-basic (>= 3.2.3)
-      opener-polarity-tagger (>= 3.4.0)
+      opener-polarity-tagger (>= 3.5.0)
       opener-pos-tagger (>= 3.2.0)
       opener-property-tagger (>= 3.4.0)
       opener-tokenizer (>= 2.2.0)
@@ -48,7 +48,7 @@ GEM
     concurrent-ruby (1.1.8)
     detect_language (1.1.2)
     diff-lcs (1.4.4)
-    faraday (0.17.3)
+    faraday (0.17.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.14.2-java)
     google-cloud-core (1.5.0)
@@ -130,7 +130,7 @@ GEM
       opener-core (~> 2.2)
       opener-daemons (~> 2.2)
       opener-webservice (~> 2.1)
-    opener-polarity-tagger (3.4.0)
+    opener-polarity-tagger (3.5.0)
       activesupport
       cliver
       hashie
@@ -201,7 +201,7 @@ GEM
       rack (>= 1.0, < 3)
     rack-timeout (0.6.0)
     rake (13.0.3)
-    roda (3.40.0)
+    roda (3.41.0)
       rack
     rollbar (1.5.3)
       multi_json (~> 1.3)
