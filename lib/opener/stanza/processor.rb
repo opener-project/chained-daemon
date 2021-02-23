@@ -41,7 +41,10 @@ module Opener
         kaf      = KAF::Document.from_xml input
         lang     = LANGUAGES_CACHE.get[kaf.language]
         env      = params.cache_keys.environment
-        unless lang&.environments&.include? env or (env == 'staging' and lang&.environments&.include? 'production')
+        unless lang&.environments&.include? env or (params.cache_keys.merged and lang&.environments&.include? 'production')
+          raise Core::UnsupportedLanguageError.new kaf.language
+        end
+        if env == 'production' and !lang.supported_by_opener
           raise Core::UnsupportedLanguageError.new kaf.language
         end
 
