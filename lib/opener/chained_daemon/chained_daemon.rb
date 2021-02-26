@@ -1,6 +1,12 @@
 module Opener
   class ChainedDaemon
 
+    class_attribute :http
+    self.http = HTTPClient.new
+    self.http.send_timeout    = 600
+    self.http.receive_timeout = 600
+    self.http.connect_timeout = 600
+
     DEFAULT_OPTIONS = {
     }
 
