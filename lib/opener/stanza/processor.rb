@@ -62,7 +62,8 @@ module Opener
         sentences.each.with_index do |s, i|
           miscs[i] = {}
           s.each do |word|
-            word.id.is_a?(Array) && word.id.each{ |id| miscs[i][id] = word.misc }
+              (word.id.min..word.id.max).each { |id| miscs[i][id] = word.misc }
+            end
           end
         end
 
