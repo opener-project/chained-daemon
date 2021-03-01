@@ -26,11 +26,11 @@ module Opener
         'PRON'  => 'Q',
         'PROPN' => 'R',
         'PART'  => 'P',
-        'NUM'   => 'O',
+        'NUM'   => 'I',
         'X'     => 'O',
-        'SYM'   => 'O',
+        'SYM'   => 'I',
         'SCONJ' => 'P',
-        'INTJ'  => 'O',
+        'INTJ'  => 'I',
       }
 
       POS_OPEN        = %w[N R G V A O]
