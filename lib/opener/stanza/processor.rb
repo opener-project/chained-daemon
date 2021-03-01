@@ -50,7 +50,7 @@ module Opener
 
         input     = kaf.raw
         input     = input.gsub(/\,[^\ ]/, ', ')
-        response  = Faraday.post BASE_URL, {lang: kaf.language, input: input}.to_query
+        response  = ChainedDaemon.http.post BASE_URL, {lang: kaf.language, input: input}.to_query
         raise Core::UnsupportedLanguageError, kaf.language if response.status == 406
         raise response.body if response.status >= 400
         sentences = JSON.parse response.body

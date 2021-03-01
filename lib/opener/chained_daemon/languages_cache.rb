@@ -24,20 +24,10 @@ module Opener
       def cache_update
         puts "loading supported languages from url #{@url}" if ENV['DEBUG']
 
-        languages     = SymMash.new JSON.parse http.get(@url).body
+        languages     = SymMash.new JSON.parse ChainedDaemon.http.get(@url).body
         @last_updated = Time.now
         @cache        = languages.data.each.with_object({}){ |l,h| h[l.code] = l }
         @cache
-      end
-
-      def http
-        return @http if @http
-
-        @http = HTTPClient.new
-        @http.send_timeout    = 120
-        @http.receive_timeout = 120
-        @http.connect_timeout = 120
-        @http
       end
 
     end
