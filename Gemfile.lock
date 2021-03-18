@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    opener-chained-daemon (3.3.10)
+    opener-chained-daemon (3.3.12)
       activesupport
       google-cloud-translate (~> 1.0)
       hashie
@@ -10,7 +10,7 @@ PATH
       opener-daemons (~> 2.7.3)
       opener-language-identifier (>= 4.4.0)
       opener-opinion-detector-basic (>= 3.2.3)
-      opener-polarity-tagger (>= 3.5.2)
+      opener-polarity-tagger (>= 3.5.3)
       opener-property-tagger (>= 3.4.1)
       rack-timeout
       roda
