@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    opener-chained-daemon (3.3.8)
+    opener-chained-daemon (3.3.12)
       activesupport
       google-cloud-translate (~> 1.0)
       hashie
