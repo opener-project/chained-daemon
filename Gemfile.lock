@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    opener-chained-daemon (3.3.13)
+    opener-chained-daemon (3.3.16)
       activesupport
       google-cloud-translate (~> 1.0)
       hashie
@@ -9,7 +9,7 @@ PATH
       opener-callback-handler (~> 1.0)
       opener-daemons (~> 2.7.2)
       opener-language-identifier (>= 4.4.0)
-      opener-opinion-detector-basic (>= 3.2.4)
+      opener-opinion-detector-basic (>= 3.2.5)
       opener-polarity-tagger (>= 3.5.3)
       opener-property-tagger (>= 3.4.1)
       rack-timeout
@@ -122,7 +122,7 @@ GEM
       opener-daemons (~> 2.5, >= 2.5.6)
       opener-webservice (~> 2.1)
       slop (~> 3.5)
-    opener-opinion-detector-basic (3.2.4)
+    opener-opinion-detector-basic (3.2.5)
       activesupport
       hashie
       nokogiri
