@@ -1,7 +1,7 @@
 module Opener
   class ChainedDaemon
 
-    VERSION = '3.3.15'
+    VERSION = '3.3.16'
 
   end
 end
