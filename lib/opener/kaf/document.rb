@@ -56,6 +56,7 @@ module Opener
           offset: params.offset,
           length: params.length,
           head:   params.head,
+          xpos:   params.xpos
         }
         wf.attr attrs
       end
@@ -71,6 +72,7 @@ module Opener
           pos:        params.pos,
           morphofeat: params.morphofeat,
           head:       params.head,
+          xpos:       params.xpos
         }
         term.attr attrs
         term.first.add_child("<span><target id='w#{params.wid}'/></span>")

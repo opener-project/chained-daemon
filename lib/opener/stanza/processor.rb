@@ -102,6 +102,7 @@ module Opener
               pos:        pos,
               type:       type,
               head:       word.head,
+              xpos:       word.xpos
             )
 
             kaf.add_word_form params
