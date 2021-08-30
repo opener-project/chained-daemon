@@ -56,7 +56,7 @@ module Opener
           offset: params.offset,
           length: params.length,
           head:   params.head,
-          xpos:   params.xpos
+          xpos:   params.xpos.to_s
         }
         wf.attr attrs
       end
@@ -67,12 +67,12 @@ module Opener
         attrs = {
           tid:        "t#{params.tid}",
           type:       params.type,
-          lemma:      params.lemma,
+          lemma:      params.lemma || params.text,
           text:       params.text,
           pos:        params.pos,
           morphofeat: params.morphofeat,
           head:       params.head,
-          xpos:       params.xpos
+          xpos:       params.xpos.to_s
         }
         term.attr attrs
         term.first.add_child("<span><target id='w#{params.wid}'/></span>")
