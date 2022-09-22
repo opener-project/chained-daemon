@@ -52,6 +52,7 @@ Example:
             # Set environment as staging from console for testing purposes
             env = ENV['LEXICONS_ENV'] || 'staging'
             pt  = ENV['LEXICONS_PROPERTY_TYPE']
+            params[:language]   = ENV['OVERRIDE_LANGUAGE']
             params[:cache_keys] = {
               environment:   env,
               property_type: pt,
