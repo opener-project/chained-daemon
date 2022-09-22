@@ -25,7 +25,9 @@ module Opener
 
     def run input, _params = {}
       params = SymMash.new _params
-      params.translate_languages ||= []
+      params.reject!{ |k,v| v.blank? }
+      params.cache_keys.reject!{ |k,v| v.blank? }
+
       params.cache_keys = SymMash.new params.cache_keys&.to_h&.sort&.to_h || {}
       if params.filter_vertical and params.property_type.present?
         params.cache_keys.property_type = params.property_type
@@ -33,6 +35,7 @@ module Opener
       params.cache_keys.contract_ids = nil unless params.cache_keys.contract_ids
 
       params.cache_keys.environment ||= 'production'
+      params.translate_languages    ||= []
 
       lang     = nil
       output   = nil
