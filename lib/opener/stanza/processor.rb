@@ -75,7 +75,7 @@ module Opener
             # save misc for later usase in a MWT case
             next if word.id.is_a? Array
 
-            misc = word.slice(:start_char, :end_char) || miscs[s_index][word.id]
+            misc = word.slice(:start_char, :end_char).presence || miscs[s_index][word.id]
 
             Rollbar.scoped({ input: input, params: params, sentences: sentences, word: word }) do
               raise 'Missing misc'
