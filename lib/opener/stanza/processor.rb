@@ -63,7 +63,7 @@ module Opener
           miscs[i] = {}
           s.each do |word|
             if word.id.is_a?(Array)
-              (word.id.min..word.id.max).each { |id| miscs[i][id] = word.misc }
+              (word.id.min..word.id.max).each { |id| miscs[i][id] = word.slice(:start_char, :end_char) }
             end
           end
         end
@@ -75,14 +75,14 @@ module Opener
             # save misc for later usase in a MWT case
             next if word.id.is_a? Array
 
-            misc = word.misc || miscs[s_index][word.id]
+            misc = word.slice(:start_char, :end_char) || miscs[s_index][word.id]
 
             Rollbar.scoped({ input: input, params: params, sentences: sentences, word: word }) do
               raise 'Missing misc'
-            end if misc.nil?
+            end unless misc.start_char and misc.end_char
 
-            offset = misc.match(/start_char=(\d+)|/)[1].to_i
-            length = misc.match(/end_char=(\d+)/)[1].to_i - offset
+            offset = misc.start_char
+            length = misc.end_char - offset
 
             u_pos  = word.upos
             pos    = POS[u_pos]
