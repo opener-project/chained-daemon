@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'httpclient'
   spec.add_dependency 'hashie'
 
+  spec.add_dependency 'rexml'
   spec.add_dependency 'roda'
   spec.add_dependency 'rack-timeout'
   spec.add_dependency 'oni', '>= 4.3.1'
