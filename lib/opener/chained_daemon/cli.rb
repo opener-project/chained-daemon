@@ -19,6 +19,7 @@ module Opener
       #
       def run argv = ARGV
         parser.parse argv
+        $output
       end
 
       ##
@@ -59,8 +60,8 @@ Example:
               merged:        (true if env == 'staging'),
             }
 
-            output = daemon.run input, params
-            puts output
+            $output = daemon.run input, params
+            puts $output
           end
         end
       end
